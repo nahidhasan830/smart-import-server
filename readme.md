@@ -1,12 +1,31 @@
-Target:
-To be implemented the CRUD operations for site.
+<div id="top"></div>
 
---------Procedure to run this server on localhost---------------
+<!-- GETTING STARTED -->
 
-Pre-requisites:
-i. Windows operating system required . Didn't tested on Linux or MacOS.
-ii.Node should be installed on your system.
+## Getting Started
 
-1. Open terminal and write command 'npm install'.It'll install all required dependencies.
-2. After finished installing, simply type command 'npm start'.
-   this will run server on localhost:5000.
+This is the backend server of the app 'Smart Import System'. Find the instructions below to run it on localhost.
+
+### Prerequisites
+
+- Windows operating system required . Didn't tested on Linux or MacOS.
+- node should be installed on your system.
+
+### Installation
+
+_Here is the procedure to install all dependencies and run the application on localhost._
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/nahidhasan830/smart-import-server.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Start the development server by running the following command
+   ```sh
+   npm start
+   ```
+
+<p align="right">(<a href="#top">back to top</a>)</p>
