@@ -27,7 +27,7 @@ export const updateOne = (Model: Model<any>) =>
     });
 
     if (!doc)
-      return next(new appError(`No document found with the id: ${id}`, 404));
+      return next(new appError(`Document not found for the id: ${id}`, 404));
 
     res.status(200).json({
       status: 'success',
