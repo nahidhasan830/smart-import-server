@@ -6,6 +6,12 @@
 
 This is the backend server of the app 'Smart Import System'. Find the instructions below to run it on localhost.
 
+### Deployment
+
+Here is the deployed version of NextJS client for this backend. Check it out!
+
+<p>Deployed To Vercel: <a href="https://smart-import-900wb1wdm-nahidhasan830.vercel.app/">Smart Import</a></p>
+
 ### Prerequisites
 
 - Windows operating system required . Didn't tested on Linux or MacOS.

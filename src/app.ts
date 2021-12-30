@@ -17,7 +17,7 @@ app.use(compression());
 app.use(
   cors({
     credentials: true,
-    origin: 'http://localhost:3000'
+    origin: ['http://localhost:3000', 'https://smart-import-client.vercel.app/']
   })
 );
 
