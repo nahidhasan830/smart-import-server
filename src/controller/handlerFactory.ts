@@ -8,8 +8,7 @@ export const deleteOne = (Model: Model<any>) =>
     const { id } = req.params;
     const doc = await Model.findByIdAndDelete(id);
 
-    if (!doc)
-      return next(new appError(`No document found with the id: ${id}`, 404));
+    if (!doc) return next(new appError('Document not found with that id', 404));
 
     res.status(204).json({
       status: 'success',
@@ -26,8 +25,7 @@ export const updateOne = (Model: Model<any>) =>
       runValidators: true
     });
 
-    if (!doc)
-      return next(new appError(`Document not found for the id: ${id}`, 404));
+    if (!doc) return next(new appError('Document not found with that id', 404));
 
     res.status(200).json({
       status: 'success',
@@ -57,8 +55,7 @@ export const getOne = (Model: Model<any>, popOptions?: Object) =>
     if (popOptions) query = query.populate(popOptions);
     const doc = await query;
 
-    if (!doc)
-      return next(new appError(`No document found with the id: ${id}`, 404));
+    if (!doc) return next(new appError('Document not found with that id', 404));
 
     res.status(200).json({
       status: 'success',
