@@ -9,9 +9,10 @@ export const deleteOne = (Model: Model<any>) =>
       (req.params as { id: string }).id
     );
 
-    if (!doc) {
-      return next(new appError('No document found with that ID', 404));
-    }
+    if (!doc)
+      return next(
+        new appError(`No document found with the id: ${req.params.id}`, 404)
+      );
 
     res.status(204).json({
       status: 'success',
@@ -27,7 +28,7 @@ export const updateOne = (Model: Model<any>) =>
     });
 
     if (!doc) {
-      return next(new appError('No document found with that ID', 404));
+      return next(new appError('No document found with the ID', 404));
     }
 
     res.status(200).json({
@@ -56,9 +57,7 @@ export const getOne = (Model: Model<any>, popOptions?: Object) =>
     if (popOptions) query = query.populate(popOptions);
     const doc = await query;
 
-    if (!doc) {
-      return next(new appError('No document found with that ID', 404));
-    }
+    if (!doc) return next(new appError('No document found with that ID', 404));
 
     res.status(200).json({
       status: 'success',
