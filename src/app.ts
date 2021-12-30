@@ -15,7 +15,7 @@ const app = express();
 app.use(compression());
 
 //CORS SETTINGS
-const whitelist = ['http://localhost:3000', 'https://smart-import.vercel.app/'];
+const whitelist = ['http://localhost:3000', 'https://smart-import.vercel.app'];
 const corsOptions = {
   origin: function (origin: any, callback: any) {
     if (whitelist.indexOf(origin) !== -1) {
