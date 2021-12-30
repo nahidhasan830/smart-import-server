@@ -10,7 +10,7 @@ This is the backend server of the app 'Smart Import System'. Find the instructio
 
 Here is the deployed version of NextJS client for this backend. Check it out!
 
-<p>Deployed To Vercel: <a href="https://smart-import-900wb1wdm-nahidhasan830.vercel.app/">Smart Import</a></p>
+<p>Deployed To Vercel: <a href="https://smart-import.vercel.app/">Smart Import</a></p>
 
 ### Prerequisites
 
