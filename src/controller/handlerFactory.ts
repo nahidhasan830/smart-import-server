@@ -5,14 +5,11 @@ import { Model } from 'mongoose';
 
 export const deleteOne = (Model: Model<any>) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-    const doc = await Model.findByIdAndDelete(
-      (req.params as { id: string }).id
-    );
+    const { id } = req.params;
+    const doc = await Model.findByIdAndDelete(id);
 
     if (!doc)
-      return next(
-        new appError(`No document found with the id: ${req.params.id}`, 404)
-      );
+      return next(new appError(`No document found with the id: ${id}`, 404));
 
     res.status(204).json({
       status: 'success',
@@ -22,14 +19,15 @@ export const deleteOne = (Model: Model<any>) =>
 
 export const updateOne = (Model: Model<any>) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-    const doc = await Model.findByIdAndUpdate(req.params.id, req.body, {
+    const { id } = req.params;
+
+    const doc = await Model.findByIdAndUpdate(id, req.body, {
       new: true,
       runValidators: true
     });
 
-    if (!doc) {
-      return next(new appError('No document found with the ID', 404));
-    }
+    if (!doc)
+      return next(new appError(`No document found with the id: ${id}`, 404));
 
     res.status(200).json({
       status: 'success',
@@ -53,11 +51,14 @@ export const createOne = (Model: Model<any>) =>
 
 export const getOne = (Model: Model<any>, popOptions?: Object) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-    let query = Model.findById(req.params.id);
+    const { id } = req.params;
+
+    let query = Model.findById(id);
     if (popOptions) query = query.populate(popOptions);
     const doc = await query;
 
-    if (!doc) return next(new appError('No document found with that ID', 404));
+    if (!doc)
+      return next(new appError(`No document found with the id: ${id}`, 404));
 
     res.status(200).json({
       status: 'success',
@@ -70,7 +71,7 @@ export const getOne = (Model: Model<any>, popOptions?: Object) =>
 export const getAll = (Model: Model<any>) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const doc = await Model.find();
-    // SEND RESPONSE
+
     res.status(200).json({
       status: 'success',
       results: doc.length,
