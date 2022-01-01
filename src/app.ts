@@ -15,18 +15,12 @@ const app = express();
 app.use(compression());
 
 //CORS SETTINGS
-const whitelist = ['http://localhost:3000', 'https://smart-import.vercel.app'];
-const corsOptions = {
-  origin: function (origin: any, callback: any) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
-};
 
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: ['http://localhost:3000', 'https://smart-import.vercel.app']
+  })
+);
 
 app.use(helmet());
 
